@@ -1,0 +1,24 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        ObisConcept.CookieConsent: true
+
+ObisConcept:
+  CookieConsent:
+    enable: true
+    includeJavaScript: true
+    includeCss: true
+    policyPageNode: ''
+    translations:
+      package: 'ObisConcept.CookieConsent'
+      source: 'Main'
+    position: 'bottom'
+    theme: 'block'
+    palette:
+      popup:
+        background: '#000'
+        text: '#fff'
+      button:
+        background: '#f1d600'
+        text: '#000'
