@@ -1,8 +1,8 @@
 TYPO3:
   Neos:
-    fusion:
+    typoScript:
       autoInclude:
-        ObisConcept.CookieConsent: true
+        'ObisConcept.CookieConsent': true
 
 ObisConcept:
   CookieConsent:
