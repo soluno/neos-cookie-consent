@@ -1,4 +1,4 @@
-prototype(TYPO3.Neos.NodeTypes:Page) {
+prototype(TYPO3.Neos:Page) {
   head.cookieConsent = TYPO3.TypoScript:Template {
     templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/TypoScriptObjects/Initialize.html'
 
