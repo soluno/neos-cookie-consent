@@ -6,7 +6,7 @@ A Neos CMS package that integrates [Cookie Consent](https://cookieconsent.insite
 
 Require it through composer:
 ``` shell
-$ composer require obisconcept/neos-cookieconsent
+$ composer require obisconcept/neos-cookieconsent:^3.0.0
 ```
 
 ## Usage
