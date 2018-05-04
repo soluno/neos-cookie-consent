@@ -15,7 +15,7 @@ prototype(Neos.Neos:Page) {
         link = ${Translation.translate('link-text', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
 
         href = Neos.Neos:NodeUri {
-          node = ${q('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
+          node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
           absolute = true
         }
       }
