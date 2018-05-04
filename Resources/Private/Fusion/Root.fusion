@@ -1,20 +1,20 @@
-prototype(Typo3.Neos:Page) {
-  head.cookieConsent = Typo3.Fusion:Template {
-    templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/FusionObjects/Initialize.html'
+prototype(TYPO3.Neos.NodeTypes:Page) {
+  head.cookieConsent = TYPO3.TypoScript:Template {
+    templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/TypoScriptObjects/Initialize.html'
 
     includeJavaScript = ${Configuration.setting('ObisConcept.CookieConsent.includeJavaScript')}
     includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
 
-    settings = Typo3.Fusion:RawArray {
+    settings = TYPO3.TypoScript:RawArray {
       position = ${Configuration.setting('ObisConcept.CookieConsent.position')}
       theme = ${Configuration.setting('ObisConcept.CookieConsent.theme')}
       palette = ${Configuration.setting('ObisConcept.CookieConsent.palette')}
-      content = Typo3.Fusion:RawArray {
+      content = TYPO3.TypoScript:RawArray {
         message = ${Translation.translate('message', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
         dismiss = ${Translation.translate('dismiss', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
         link = ${Translation.translate('link-text', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
 
-        href = Typo3.Neos:NodeUri {
+        href = TYPO3.Neos:NodeUri {
           node = ${q('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
           absolute = true
         }
