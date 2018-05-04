@@ -1,6 +1,6 @@
 {
   "description": "Cookie Consent integration for Neos CMS.",
-  "type": "neos-package",
+  "type": "neos-plugin",
   "name": "obisconcept/neos-cookieconsent",
   "license": "MIT",
   "authors": [
