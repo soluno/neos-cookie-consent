@@ -38,3 +38,19 @@ ObisConcept:
           background: '#f1d600'
           text: '#000'
 ```
+
+### Opt-in / Opt-out Events
+
+If you choose `opt-in` or `opt-out` as type, there is an event fired on the document
+indicating when the user accepted, declined or revoked your cookie policy.    
+The `detail` property of the event is set to `true` when cookies should be enabled, `false` if they should be disabled.
+
+``` javascript
+document.addEventListener('CookieConsent.Change', function (event) {
+  if(event.detail) {
+    // Enable cookies
+  } else {
+    // Disable cookies
+  }
+})
+```
