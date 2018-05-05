@@ -1,0 +1,28 @@
+prototype(CC:Settings) < prototype(F:RawArray) {
+  @context.translationSource = ${Configuration.setting('ObisConcept.CookieConsent.translations.source')}
+  @context.translationPackage = ${Configuration.setting('ObisConcept.CookieConsent.translations.package')}
+
+  position = ${Configuration.setting('ObisConcept.CookieConsent.position')}
+  theme = ${Configuration.setting('ObisConcept.CookieConsent.theme')}
+  palette = ${Configuration.setting('ObisConcept.CookieConsent.palette')}
+
+  content = F:RawArray {
+    message = ${Translation.translate('message', null, [], translationSource, translationPackage)}
+    dismiss = ${Translation.translate('dismiss', null, [], translationSource, translationPackage)}
+    link = ${Translation.translate('link-text', null, [], translationSource, translationPackage)}
+
+    href = NodeUri {
+      node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.policyPage.node')).get(0)}
+      absolute = true
+
+      section = F:Value {
+        value = ${Configuration.setting('ObisConcept.CookieConsent.policyPage.section')}
+        @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.policyPage.section')) == false}
+      }
+
+      @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.policyPage.node')) == false}
+    }
+  }
+
+  @ignoreProperties = ${['translationSource', 'translationPackage']}
+}
