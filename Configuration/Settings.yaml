@@ -9,16 +9,20 @@ ObisConcept:
     enable: true
     includeJavaScript: true
     includeCss: true
-    policyPageNode: ''
     translations:
       package: 'ObisConcept.CookieConsent'
       source: 'Main'
-    position: 'bottom'
-    theme: 'block'
-    palette:
-      popup:
-        background: '#000'
-        text: '#fff'
-      button:
-        background: '#f1d600'
-        text: '#000'
+    settings:
+      type: 'notice'
+      position: 'bottom'
+      theme: 'block'
+      policyPage:
+        node: ''
+        section: ''
+      palette:
+        popup:
+          background: '#000'
+          text: '#fff'
+        button:
+          background: '#f1d600'
+          text: '#000'
