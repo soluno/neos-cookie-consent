@@ -1,5 +1,5 @@
 namespace: F=Neos.Fusion
-namespace: CC=ObisConcet.CookieConsent
+namespace: CC=ObisConcept.CookieConsent
 
 include: Settings.fusion
 
