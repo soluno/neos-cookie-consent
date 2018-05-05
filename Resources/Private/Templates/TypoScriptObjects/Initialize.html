@@ -1,16 +1,9 @@
-<f:if condition="{includeCss}">
-    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'Stylesheets/cookieconsent.min.css', package: 'ObisConcept.CookieConsent')}" />
-</f:if>
-
-<f:if condition="{includeJavaScript}">
-    <script src="{f:uri.resource(path: 'JavaScript/cookieconsent.min.js', package: 'ObisConcept.CookieConsent')}"></script>
-</f:if>
-
+{styleTag -> f:format.raw()}
+{scriptTag -> f:format.raw()}
 <script>
-    <![CDATA[
-    window.addEventListener("load", function(){
-        window.cookieconsent.initialise(
-        ]]>{settings -> f:format.raw()}<![CDATA[
-        )});
-    ]]>
+  var settings = {settings -> f:format.raw()};
+
+  window.addEventListener('load', function (event) {
+    window.cookieconsent.initialise(settings);
+  })
 </script>

@@ -1,20 +1,49 @@
-prototype(TYPO3.Neos:Page) {
-  head.cookieConsent = TYPO3.TypoScript:Template {
+namespace: Ts=TYPO3.TypoScript
+
+prototype(Page) {
+  head.cookieConsent = Ts:Template {
     templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/TypoScriptObjects/Initialize.html'
 
-    includeJavaScript = ${Configuration.setting('ObisConcept.CookieConsent.includeJavaScript')}
-    includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
+    scriptTag = Ts:Tag {
+      tagName = 'script'
+      attributes {
+        type = 'text/javascript'
+        src = Ts:ResourceUri {
+          path = 'JavaScript/cookieconsent.min.js'
+          package = 'ObisConcept.CookieConsent'
+        }
+      }
 
-    settings = TYPO3.TypoScript:RawArray {
+      @if.includeJavaScript = ${Configuration.setting('ObisConcept.CookieConsent.includeJavaScript')}
+    }
+
+    styleTag = Ts:Tag {
+      tagName = 'link'
+      attributes {
+        rel = 'stylesheet'
+        type = 'text/css'
+        href = Ts:ResourceUri {
+          path = 'Stylesheets/cookieconsent.min.css'
+          package = 'ObisConcept.CookieConsent'
+        }
+      }
+
+      @if.includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
+    }
+
+    @context.translationSource = ${Configuration.setting('ObisConcept.CookieConsent.translations.source')}
+    @context.translationPackage = ${Configuration.setting('ObisConcept.CookieConsent.translations.package')}
+
+    settings = Ts:RawArray {
       position = ${Configuration.setting('ObisConcept.CookieConsent.position')}
       theme = ${Configuration.setting('ObisConcept.CookieConsent.theme')}
       palette = ${Configuration.setting('ObisConcept.CookieConsent.palette')}
-      content = TYPO3.TypoScript:RawArray {
-        message = ${Translation.translate('message', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
-        dismiss = ${Translation.translate('dismiss', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
-        link = ${Translation.translate('link-text', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
+      content = Ts:RawArray {
+        message = ${Translation.translate('message', null, [], translationSource, translationPackage)}
+        dismiss = ${Translation.translate('dismiss', null, [], translationSource, translationPackage)}
+        link = ${Translation.translate('link-text', null, [], translationSource, translationPackage)}
 
-        href = TYPO3.Neos:NodeUri {
+        href = NodeUri {
           node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
           absolute = true
         }
