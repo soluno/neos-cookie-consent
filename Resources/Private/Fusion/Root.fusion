@@ -35,7 +35,7 @@ prototype(Page) {
         @if.includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
       }
 
-      settings = CC:SettingsArray {
+      settings = CC:Settings {
         @process.json = ${Json.stringify(value)}
       }
 
