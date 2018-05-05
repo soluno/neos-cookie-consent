@@ -17,22 +17,24 @@ The following options are available:
 ``` yaml
 ObisConcept:
   CookieConsent:
-    enable: true                # Wether to enable the notice.
-    includeJavaScript: true     # Auto-include cookieconsent's javascript file.
-    includeCss: true            # Auto-include cookieconsent's stylesheet file.
-    policyPageNode: ''          # The page identifier of your privacy statement.
-    translations:               # Change the translation source for custom texts.
+    enable: true                # Wether to enable the notice
+    includeJavaScript: true     # Auto-include the javascript file
+    includeCss: true            # Auto-include the stylesheet
+    translations:               # The translation source
       package: 'ObisConcept.CookieConsent'
       source: 'Main'
-    position: 'bottom'          # The position of the notice. Possible Values:
-                                # "bottom", "bottom-left", "bottom-right", "top"
-    theme: 'block'              # The theme of the notice. Possible Values:
-                                # "block", "classic", "edgeless", "wire"
-    palette:
-      popup:
-        background: '#000'      # The background color and
-        text: '#fff'            # the text color of the notice box
-      button:
-        background: '#f1d600'   # The background color and
-        text: '#000'            # the text color of the dismiss-button
+    settings:                   # CookieConsent API settings
+      type: 'info'              # ('info' / 'opt-in' / 'opt-out')
+      position: 'bottom'        # ('bottom' / 'bottom-left' / 'bottom-right' / 'top' / 'pushdown')
+      theme: 'block'            # ('block' / 'classic' / 'edgeless' / 'wire')
+      policyPage:
+        node: ''                # The policy page node identifier (optional)
+        section: ''             # The policy page node target anchor (optional)
+      palette:                  # The color palette of the notice
+        popup:
+          background: '#000'
+          text: '#fff'
+        button:
+          background: '#f1d600'
+          text: '#000'
 ```
