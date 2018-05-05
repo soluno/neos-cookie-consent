@@ -1,22 +1,53 @@
-prototype(Neos.Neos:Page) {
-  head.cookieConsent = Neos.Fusion:Template {
+namespace: F=Neos.Fusion
+
+prototype(Page) {
+  head.cookieConsent = F:Template {
     templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/FusionObjects/Initialize.html'
 
-    includeJavaScript = ${Configuration.setting('ObisConcept.CookieConsent.includeJavaScript')}
-    includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
+    scriptTag = F:Tag {
+      tagName = 'script'
+      attributes {
+        type = 'text/javascript'
+        src = F:ResourceUri {
+          path = 'JavaScript/cookieconsent.min.js'
+          package = 'ObisConcept.CookieConsent'
+        }
+      }
 
-    settings = Neos.Fusion:RawArray {
+      @if.includeJavaScript = ${Configuration.setting('ObisConcept.CookieConsent.includeJavaScript')}
+    }
+
+    styleTag = F:Tag {
+      tagName = 'link'
+      attributes {
+        rel = 'stylesheet'
+        type = 'text/css'
+        href = F:ResourceUri {
+          path = 'Stylesheets/cookieconsent.min.css'
+          package = 'ObisConcept.CookieConsent'
+        }
+      }
+
+      @if.includeCss = ${Configuration.setting('ObisConcept.CookieConsent.includeCss')}
+    }
+
+    @context.translationSource = ${Configuration.setting('ObisConcept.CookieConsent.translations.source')}
+    @context.translationPackage = ${Configuration.setting('ObisConcept.CookieConsent.translations.package')}
+
+    settings = F:RawArray {
       position = ${Configuration.setting('ObisConcept.CookieConsent.position')}
       theme = ${Configuration.setting('ObisConcept.CookieConsent.theme')}
       palette = ${Configuration.setting('ObisConcept.CookieConsent.palette')}
-      content = Neos.Fusion:RawArray {
-        message = ${Translation.translate('message', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
-        dismiss = ${Translation.translate('dismiss', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
-        link = ${Translation.translate('link-text', null, [], Configuration.setting('ObisConcept.CookieConsent.translations.source'), Configuration.setting('ObisConcept.CookieConsent.translations.package'))}
+      content = F:RawArray {
+        message = ${Translation.translate('message', null, [], translationSource, translationPackage)}
+        dismiss = ${Translation.translate('dismiss', null, [], translationSource, translationPackage)}
+        link = ${Translation.translate('link-text', null, [], translationSource, translationPackage)}
 
-        href = Neos.Neos:NodeUri {
-          node = ${q('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
+        href = NodeUri {
+          node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.policyPageNode')).get(0)}
           absolute = true
+
+          @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.policyPageNode')) == false}
         }
       }
 
@@ -25,5 +56,7 @@ prototype(Neos.Neos:Page) {
 
     @if.enabled = ${Configuration.setting('ObisConcept.CookieConsent.enable') == true}
     @if.inFrontend = ${site.context.inBackend == false}
+
+    @ignoreProperties = ${['translationSource', 'translationPackage']}
   }
 }
