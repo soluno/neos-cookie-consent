@@ -2,9 +2,10 @@ prototype(CC:Settings) < prototype(F:RawArray) {
   @context.translationSource = ${Configuration.setting('ObisConcept.CookieConsent.translations.source')}
   @context.translationPackage = ${Configuration.setting('ObisConcept.CookieConsent.translations.package')}
 
-  position = ${Configuration.setting('ObisConcept.CookieConsent.position')}
-  theme = ${Configuration.setting('ObisConcept.CookieConsent.theme')}
-  palette = ${Configuration.setting('ObisConcept.CookieConsent.palette')}
+  type = ${Configuration.setting('ObisConcept.CookieConsent.settings.type')}
+  position = ${Configuration.setting('ObisConcept.CookieConsent.settings.position')}
+  theme = ${Configuration.setting('ObisConcept.CookieConsent.settings.theme')}
+  palette = ${Configuration.setting('ObisConcept.CookieConsent.settings.palette')}
 
   content = F:RawArray {
     message = ${Translation.translate('message', null, [], translationSource, translationPackage)}
@@ -12,15 +13,15 @@ prototype(CC:Settings) < prototype(F:RawArray) {
     link = ${Translation.translate('link-text', null, [], translationSource, translationPackage)}
 
     href = NodeUri {
-      node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.policyPage.node')).get(0)}
+      node = ${q(site).find('#' + Configuration.setting('ObisConcept.CookieConsent.settings.policyPage.node')).get(0)}
       absolute = true
 
       section = F:Value {
-        value = ${Configuration.setting('ObisConcept.CookieConsent.policyPage.section')}
-        @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.policyPage.section')) == false}
+        value = ${Configuration.setting('ObisConcept.CookieConsent.settings.policyPage.section')}
+        @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.settings.policyPage.section')) == false}
       }
 
-      @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.policyPage.node')) == false}
+      @if.isset = ${String.isBlank(Configuration.setting('ObisConcept.CookieConsent.settings.policyPage.node')) == false}
     }
   }
 
