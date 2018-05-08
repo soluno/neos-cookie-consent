@@ -2,7 +2,7 @@
 
 A Neos CMS package that integrates [Cookie Consent](https://cookieconsent.insites.com/).
 
-**Please notice** that this branch has been created to server legacy Neos versions between 2.0 and 2.2! It is not a stable branch and should not be used in production systems!
+**Please notice** that this branch has been created to serve legacy Neos versions between 2.0 and 2.3! It is not a stable branch and should not be used in production systems!
 
 ## Installation
 
