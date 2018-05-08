@@ -2,7 +2,7 @@ TYPO3:
   Neos:
     typoScript:
       autoInclude:
-        'ObisConcept.CookieConsent': true
+        'obisconcept.neoscookieconsent': true
 
 ObisConcept:
   CookieConsent:
@@ -11,7 +11,7 @@ ObisConcept:
     includeCss: true
     policyPageNode: ''
     translations:
-      package: 'ObisConcept.CookieConsent'
+      package: 'obisconcept.neoscookieconsent'
       source: 'Main'
     position: 'bottom'
     theme: 'block'

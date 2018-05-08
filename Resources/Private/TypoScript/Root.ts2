@@ -2,7 +2,7 @@ namespace: Ts=TYPO3.TypoScript
 
 prototype(Page) {
   head.cookieConsent = Ts:Template {
-    templatePath = 'resource://ObisConcept.CookieConsent/Private/Templates/TypoScriptObjects/Initialize.html'
+    templatePath = 'resource://obisconcept.neoscookieconsent/Private/Templates/TypoScriptObjects/Initialize.html'
 
     scriptTag = Ts:Tag {
       tagName = 'script'
@@ -10,7 +10,7 @@ prototype(Page) {
         type = 'text/javascript'
         src = Ts:ResourceUri {
           path = 'JavaScript/cookieconsent.min.js'
-          package = 'ObisConcept.CookieConsent'
+          package = 'obisconcept.neoscookieconsent'
         }
       }
 
@@ -24,7 +24,7 @@ prototype(Page) {
         type = 'text/css'
         href = Ts:ResourceUri {
           path = 'Stylesheets/cookieconsent.min.css'
-          package = 'ObisConcept.CookieConsent'
+          package = 'obisconcept.neoscookieconsent'
         }
       }
 
