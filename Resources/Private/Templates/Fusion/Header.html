@@ -7,38 +7,26 @@
     var type = this.options.type;
     var didConsent = this.hasConsented();
 
-    if (type == 'opt-in' && didConsent) {
-      var data = {detail: 'enable'}
-    } else if (type == 'opt-out' && !didConsent) {
-      var data = {detail: 'disable'}
-    }
-
-    document.dispatchEvent(new CustomEvent('CookieConsent.Change', data))
+    document.dispatchEvent(new CustomEvent('CookieConsent.Change', {
+      detail: (type == 'opt-in' && didConsent)
+    }))
   }
 
   settings.onStatusChange = function(status, chosenBefore) {
     var type = this.options.type;
     var didConsent = this.hasConsented();
 
-    if (type == 'opt-in' && didConsent) {
-      var data = {detail: 'enable'}
-    } else if (type == 'opt-out' && !didConsent) {
-      var data = {detail: 'disable'}
-    }
-
-    document.dispatchEvent(new CustomEvent('CookieConsent.Change', data))
+    document.dispatchEvent(new CustomEvent('CookieConsent.Change', {
+      detail: (type == 'opt-in' && didConsent)
+    }))
   }
 
   settings.onRevokeChoice = function() {
     var type = this.options.type;
 
-    if (type == 'opt-in') {
-      var data = {detail: 'disable'}
-    } else if (type == 'opt-out') {
-      var data = {detail: 'enable'}
-    }
-
-    document.dispatchEvent(new CustomEvent('CookieConsent.Change', data))
+    document.dispatchEvent(new CustomEvent('CookieConsent.Change', {
+      detail: (type == 'opt-in')
+    }))
   }
 
   window.addEventListener('load', function (event) {
