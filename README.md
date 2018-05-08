@@ -2,11 +2,13 @@
 
 A Neos CMS package that integrates [Cookie Consent](https://cookieconsent.insites.com/).
 
+**Please notice** that this branch has been created to server legacy Neos versions between 2.0 and 2.2! It is not a stable branch and should not be used in production systems!
+
 ## Installation
 
 Require it through composer:
 ``` shell
-$ composer require obisconcept/neos-cookieconsent:^1.0.0
+$ composer require obisconcept/neos-cookieconsent:dev-2.0-legacy
 ```
 
 ## Usage
@@ -22,7 +24,7 @@ ObisConcept:
     includeCss: true            # Auto-include cookieconsent's stylesheet file.
     policyPageNode: ''          # The page identifier of your privacy statement.
     translations:               # Change the translation source for custom texts.
-      package: 'ObisConcept.CookieConsent'
+      package: 'obisconcept.neoscookieconsent'
       source: 'Main'
     position: 'bottom'          # The position of the notice. Possible Values:
                                 # "bottom", "bottom-left", "bottom-right", "top"
